@@ -9,7 +9,7 @@ const App = () => {
   const [selectedDate, setSelectedDate] = useState("");
   const [inputError, setInputError] = useState("");
   const [loading, setLoading] = useState(false);
-  const socket = new WebSocket("ws://localhost:3001");
+  const socket = new WebSocket("wss://seemly-nervous-rutabaga.glitch.me");
 
   useEffect(() => {
     socket.onmessage = (event) => {
@@ -49,8 +49,8 @@ const App = () => {
   const getDataApi = (newDate) => {
     setLoading(true);
     axios
-      .get(`http://localhost:3001/api/stocks/${newDate}`)
-      .then((response) => {
+    .get(`https://seemly-nervous-rutabaga.glitch.me/api/stocks/${newDate}`)
+    .then((response) => {
         setStocks(response.data);
         setSelectedStocks(response.data);
       })
